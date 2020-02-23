@@ -23,9 +23,6 @@
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
-    "test": "jest --coverage",
-    "test:watch": "jest --coverage --watch",
-    "test:prod": "npm run lint && npm run test -- --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
@@ -45,33 +42,6 @@
       "path": "node_modules/cz-conventional-changelog"
     }
   },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "ts-jest"
-    },
-    "testEnvironment": "node",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
-      }
-    },
-    "collectCoverageFrom": [
-      "src/*.{js,ts}"
-    ]
-  },
   "prettier": {
     "semi": false,
     "singleQuote": true
@@ -84,7 +54,6 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@types/jest": "^25.1.3",
     "@types/lodash.camelcase": "^4.3.6",
     "@types/node": "^13.7.4",
     "@types/rollup-plugin-json": "^3.0.2",
@@ -94,8 +63,6 @@
     "coveralls": "^3.0.9",
     "cross-env": "^7.0.0",
     "cz-conventional-changelog": "^3.1.0",
-    "jest": "^25.1.0",
-    "jest-config": "^25.1.0",
     "lint-staged": "^10.0.7",
     "lodash.camelcase": "^4.3.0",
     "prettier": "^1.19.1",
@@ -111,7 +78,6 @@
     "semantic-release": "^17.0.4",
     "shelljs": "^0.8.3",
     "travis-deploy-once": "^5.0.11",
-    "ts-jest": "^25.2.1",
     "ts-node": "^8.6.2",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
