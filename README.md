@@ -22,9 +22,11 @@ yarn add iBlock-uBlock
 ```typescript
 const iBlockUBlock = new IBlockUBlock({
   onDetected(): void {
-    self.dialog.open(AdBlockDialog);
+    // adblocker detected
   },
-  onNotDetected(): void { }
+  onNotDetected(): void {
+    // no adblocker detected
+  }
 });
 
 iBlockUBlock.run();
