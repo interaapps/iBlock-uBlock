@@ -5,6 +5,27 @@ export default class IBlockUBlock {
   // @ts-ignore because it's assigned in applyOptions
   private options: IBlockOptions;
 
+  private baitClassArray: Array<string> = [
+    'pub_300x250',
+    'pub_300x250m',
+    'pub_728x90',
+    'textAd',
+    'text-ad',
+    'text_ad',
+    'testAds',
+    'text-ads',
+    'text_ads',
+    'text-ad-links'
+  ];
+
+  private baitStyleArray: Array<string> = [
+    'width: 1px !important;',
+    'height: 1px !important;',
+    'position: absolute !important;',
+    'left: -10000px !important;',
+    'top: -1000px !important;'
+  ];
+
   // @ts-ignore because it's assigned in setDefaultBaitOptions
   private baitOptions: {
     bait?: Element | null,
@@ -43,8 +64,8 @@ export default class IBlockUBlock {
 
   public applyOptions(opts?: IBlockOptions) {
     this.options = {
-      baitClass: 'pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links',
-      baitStyle: 'width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;',
+      baitClass: this.stringArrayToString(this.baitClassArray),
+      baitStyle: this.stringArrayToString(this.baitStyleArray),
       loopCheckTime: 50,
       loopMaxNumber: 5,
       loop: true
@@ -60,6 +81,14 @@ export default class IBlockUBlock {
     }
 
     setTimeout(() => this.check(), 1);
+  }
+
+  private stringArrayToString(array: Array<string>, delimiter: string = ' '): string {
+    let combined: string = ''
+    for (let pos = 0; pos < array.length; pos++) {
+      combined += (pos === 0 ? '' : delimiter + array[pos])
+    }
+    return combined
   }
 
   private setDefaultBaitOptions(): void {
