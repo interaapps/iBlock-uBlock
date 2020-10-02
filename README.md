@@ -5,8 +5,8 @@
 [![Forks](https://img.shields.io/github/forks/interaapps/iBlock-uBlock.svg)](https://github.com/interaapps/iBlock-uBlock)
 
 iBlock-uBlock is an open source AdBlockDetector written in typescript
-* easy usage
-* application icons are associated with folders
+* easy to use
+* declare methods on detection and run
 
 ## Installation
 ##### NPM
